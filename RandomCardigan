@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+
+public class CPHInline
+{
+	public bool Execute()
+	{
+		// Get variables
+		CPH.TryGetArg("user", out string user);
+		CPH.TryGetArg("commandSource", out string commandSource);
+		
+		// List of cardigans
+    // usernames have been removed
+		string[] cardiganList = {
+      "a book themed cardigan, in honor of @REDACTED! 📚",
+			"a cardigan dotted with cats! 🐈",
+      "a Halloween bat cardigan! 🦇",
+      "a Halloween ghostie cardigan! 👻",
+      "a Halloween pumpkin cardigan! 🎃",
+      "a Short n' Sweet cardigan! 💋",
+      "a Taylor Swift 1989 cardigan! 🩵",
+      "a Taylor Swift Fearless cardigan! 💛",
+      "a Taylor Swift Lover cardigan! 🩷",
+      "a Taylor Swift Midnights cardigan! 💙",
+      "a Taylor Swift OG Folklore cardigan! 🩶",
+      "a Taylor Swift Red cardigan! ❤️",
+      "a Taylor Swift Speak Now cardigan! 💜",
+      "a Taylor Swift The Tortured Poets Department cardigan! 🤍",
+      "an ugly Christmas cardigan! 🎄",
+      "a black ninja cardigan with red accents, in honor of @REDACTED! 🥷🏻",
+      "a cardigan covered in chapaas!",
+      "a cardigan covered in emerald ogopuus!",
+      "a cardigan lined with sernuks!",
+      "a mushroom cardigan, in honor of @REDACTED! 🍄",
+      "a muppets cardigan!",
+      "a striped pink cardigan! 🩷"
+			};
+
+		// Pull a random cardigan from the list
+		string randomCardigan = cardiganList[new Random().Next(cardiganList.Length)];
+		
+		// Send the random cardigan to whichever platform the  cardigan command originated from
+		switch (commandSource)
+		{
+			case "twitch":
+				CPH.SendMessage($"@{user} Yay, you found {randomCardigan}");
+				break;
+		}
+		
+		return true;
+	}
+}
